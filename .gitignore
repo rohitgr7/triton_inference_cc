@@ -1,0 +1,16 @@
+# Python
+__pycache__*
+
+# MacOps
+.DS_Store
+
+# environment
+.env
+
+# virtual environment
+venv/
+
+# Development
+models
+weights
+.ipynb_checkpoints
