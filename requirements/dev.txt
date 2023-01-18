@@ -1,2 +1,3 @@
+-r base.txt
 tritonclient[all]==2.29.0
 onnxruntime==1.13.1
