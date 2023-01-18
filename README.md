@@ -1,6 +1,6 @@
-## Triton inference server CC
+# Triton inference server CC
 
-### Setup
+## Setup
 
 1. Define the dockerfile
 1. Create the image
@@ -16,7 +16,7 @@ docker build -t triton_cc:0.0.1 -f dockers/Dockerfile.cpu .
 docker run -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models/:/project/models/ -v ${PWD}/weights/:/project/weights/ triton_cc:0.0.1 tritonserver --model-repository models/
 ```
 
-#### Notes:
+### Notes:
 
 1. The current base image in dockerfile has all the backends, even including tensorflow which is not required. Consider [customizing it](https://github.com/triton-inference-server/server/blob/main/docs/customization_guide/build.md#building-with-docker). More info [here](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver).
 
@@ -28,14 +28,14 @@ docker run -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models/:/pr
 
 1. We are mounting local models folder to container's models folder to ensure all the model files we create from within the notebook get's mapped automatically to the container and we can then ping tritionserver directly.
 
-### Learnings for specific backend:
+## Learnings for specific backend:
 
-#### Python backend.
+### Python backend.
 
 1. Spend some time to debug the `model.py` code. You can add breakpoints and fix issues conviniently. Run the server and when you hit it using tritonclient, the breakpoint will work.
 1. Always take care of the input dimension you are mentioning in the `config.pbtxt`.
 
-#### Onnx backend
+### Onnx backend
 
 1. Make sure the first axis of input and output is dynamic.
 1. Always take care of the input dimension you are mentioning in the `config.pbtxt`.
