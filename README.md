@@ -6,7 +6,6 @@
 1. Create the image
 
 ```bash
-docker build -t triton_cc:0.0.1 -f Dockerfile .
 docker build -t triton_cc:0.0.1 -f dockers/Dockerfile.cpu .
 ```
 
