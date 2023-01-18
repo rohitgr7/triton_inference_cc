@@ -7,12 +7,13 @@
 
 ```bash
 docker build -t triton_cc:0.0.1 -f Dockerfile .
+docker build -t triton_cc:0.0.1 -f dockers/Dockerfile.cpu .
 ```
 
 3. Run the docker container with tritonserver in detach mode
 
 ```bash
-docker run -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models/:/project/models/ triton_cc:0.0.1 tritonserver --model-repository models/
+docker run -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models/:/project/models/ -v ${PWD}/weights/:/project/weights/ triton_cc:0.0.1 tritonserver --model-repository models/
 ```
 
 #### Notes:
