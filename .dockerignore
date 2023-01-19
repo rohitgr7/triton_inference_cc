@@ -12,3 +12,4 @@ venv/
 models
 weights
 .ipynb_checkpoints
+inference_notebook

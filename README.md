@@ -12,7 +12,7 @@ docker build -t triton_cc:0.0.1 -f dockers/Dockerfile.cpu .
 3. Run the docker container with tritonserver in detach mode
 
 ```bash
-docker run -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models/:/project/models/ -v ${PWD}/weights/:/project/weights/ triton_cc:0.0.1 tritonserver --model-repository models/
+docker run -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models/:/project/models/ -v ${PWD}/weights/:/project/weights/ triton_cc:0.0.1 tritonserver --model-repository models/ --model-control-mode=poll
 ```
 
 ### Notes:
@@ -40,3 +40,17 @@ docker run -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models/:/pr
 1. Always take care of the input dimension you are mentioning in the `config.pbtxt`.
 1. Make sure to use the same input and output names while creating the onnx model and during client inference.
 1. Take care of the dtypes you are using to compile to onnx and the onces specified in the config.pbtxt. For instance, incase of transformers tokenizer, it returns dtype int64 and if you use int32 (preferred) in config.pbtxt, it will fail.
+
+TODO:
+
+1. Triton inference
+1. Performance analyser
+1. Model analyzer
+1. Dynamic batching
+1. Metrics
+1. Stable diffusion pipelines
+1. Efficient deployment on cloud (for eg. runpod.io)
+
+## Resources
+
+1. https://youtu.be/cKf-KxJVlzE
