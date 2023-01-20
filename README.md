@@ -3,7 +3,7 @@
 ## Setup
 
 > **IMPORTANT**: Check the supported triton version from the [Deep Learning Frameworks support matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html) and update the base image in Dockerfiles accordingly.
-To get the version, use `nvcc --version`. For me it was CUDA:11.7 and I used 22.08 triton version.
+> To get the version, use `nvcc --version`. For me it was CUDA:11.7 and I used 22.08 triton version.
 
 1. Create the image
 
@@ -52,13 +52,14 @@ To get the version, use `nvcc --version`. For me it was CUDA:11.7 and I used 22.
 Personal recommendation is to run this within a docker container.
 
 1. Create a container:
+
    ```bash
    docker run --gpus all --rm -it -v ${PWD}/models/:/workspace/models/ -v ${PWD}/weights/:/workspace/weights/ -v ${PWD}/inference_notebook/:/workspace/inference_notebook/ --name triton_trtc nvcr.io/nvidia/tensorrt:22.08-py3
    ```
 
-2. Run the TensorRT section of the notebook.
+1. Run the TensorRT section of the notebook.
 
 #### Useful info
 
 1. TensorRT is not supported for each operation and can cause issues. In that case, try upgrading it's version but keep in mind the CUDA version and trition of your system. If possible update the CUDA version.
-2. FP16 version takes time to compile so take a break.
+1. FP16 version takes time to compile so take a break.
