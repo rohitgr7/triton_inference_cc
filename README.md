@@ -63,7 +63,9 @@ Personal recommendation is to run this within a docker container.
 
 1. TensorRT is not supported for each operation and can cause issues. In that case, try upgrading it's version but keep in mind the CUDA version and trition of your system. If possible update the CUDA version.
 1. FP16 version takes time to compile so take a break.
-TODO:
+
+
+## TODO:
 
 1. Performance analyser
 1. Model analyzer
