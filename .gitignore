@@ -13,5 +13,7 @@ venv/
 # Development
 weights
 .ipynb_checkpoints
+*plan
 *onnx
 *pt
+*pth

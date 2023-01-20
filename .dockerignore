@@ -12,3 +12,8 @@ venv/
 models
 weights
 .ipynb_checkpoints
+deb
+*plan
+*onnx
+*pt
+*pth
