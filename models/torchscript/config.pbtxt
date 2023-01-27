@@ -1,0 +1,22 @@
+
+name: "torchscript"
+platform: "pytorch_libtorch"
+max_batch_size: 32
+
+input [
+ {
+    name: "INPUT0"
+    data_type: TYPE_INT32
+    dims: [ 256 ]
+  } ,
+{
+    name: "INPUT1"
+    data_type: TYPE_INT32
+    dims: [ 256 ]
+  }
+]
+output {
+    name: "OUTPUT0"
+    data_type: TYPE_FP32
+    dims: [ 28 ]
+  }

@@ -64,12 +64,17 @@ Personal recommendation is to run this within a docker container.
 1. TensorRT is not supported for each operation and can cause issues. In that case, try upgrading it's version but keep in mind the CUDA version and trition of your system. If possible update the CUDA version.
 1. FP16 version takes time to compile so take a break.
 
+## Features
+
+### Dynamic Batching
+
+1. While using HTTP client, use asycn_infer and make sure to set concurrency while initializing the client.
+1. While using GRPC client, use async_infer with a callback. And don't use context manager with the client. Not sure what's the reason, but will explore and update here.
 
 ## TODO:
 
 1. Performance analyser
 1. Model analyzer
-1. Dynamic batching
 1. Metrics
 1. Stable diffusion pipelines
 1. Efficient deployment on cloud (for eg. runpod.io)
