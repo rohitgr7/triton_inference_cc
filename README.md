@@ -2,16 +2,16 @@
 
 ## Intro
 
-This repo contains all the code I worked on while learning triton inference server. It has both PyTorch and Tensorflow pipeline but my main focus is to explore PyTorch models so all the advance features will be based on PyTorch.
+This repo contains all the code I worked on while learning [Triton Inference Server](https://github.com/triton-inference-server/server). It has both PyTorch and Tensorflow pipeline but my main focus is to explore PyTorch models so all the advanced features will be based on PyTorch.
 
-For starters, you can setup your environment as explained below and then walk-through the starter notebooks:
+For starters, you can set up your environment as explained below and then walk through the starter notebooks:
 
 ```console
 inference_notebooks/inference_pytorch.ipynb
 inference_notebooks/inference_tensorflow.ipynb
 ```
 
-Later you can explore advance use-cases in `inference_notebooks/advance.ipynb`.
+Later you can explore advanced use cases in `inference_notebooks/advance.ipynb`.
 
 I have also prepared some notes here in README, you can explore them too.
 
@@ -26,7 +26,7 @@ I have also prepared some notes here in README, you can explore them too.
    docker build -t triton_cc:0.0.1 -f dockers/Dockerfile.cpu .
    ```
 
-1. Run the notebook and save the `weights` folder to ensure the default pytorch model get's loaded.
+1. Run the notebook and save the `weights` folder to ensure the default PyTorch model gets loaded.
 
 1. Run the docker container with tritonserver in detach mode
 
@@ -44,21 +44,21 @@ I have also prepared some notes here in README, you can explore them too.
    1. grpc: 8001
    1. metrics: 8002
 
-1. We are mounting local models folder to container's models folder to ensure all the model files we create from within the notebook get's mapped automatically to the container and we can then ping tritionserver directly.
+1. We are mounting the local `models` folder to the container's `models` folder to ensure all the model files we create from within the notebook get mapped automatically to the container and we can then ping tritionserver directly.
 
 ## Learnings for specific backend:
 
 ### Python backend.
 
-1. Spend some time to debug the `model.py` code. You can add breakpoints and fix issues conviniently. Run the server and when you hit it using tritonclient, the breakpoint will work.
+1. Spend some time debugging the `model.py` code. You can add breakpoints and fix issues conveniently. Run the server and when you hit it using tritonclient, the breakpoint will work.
 1. Always take care of the input dimension you are mentioning in the `config.pbtxt`.
 
 ### Onnx backend
 
 1. Make sure the first axis of input and output is dynamic.
 1. Always take care of the input dimension you are mentioning in the `config.pbtxt`.
-1. Make sure to use the same input and output names while creating the onnx model and during client inference.
-1. Take care of the dtypes you are using to compile to onnx and the onces specified in the config.pbtxt. For instance, incase of transformers tokenizer, it returns dtype int64 and if you use int32 (preferred) in config.pbtxt, it will fail.
+1. Make sure to use the same input and output names while creating the Onnx model and during client inference.
+1. Take care of the dtypes you are using to compile to Onnx and the ones specified in the `config.pbtxt`. For instance, in the case of transformers tokenizer, it returns dtype int64 and if you use int32 (preferred) in `config.pbtxt`, it will fail.
 
 ### TensorRT Backend
 
@@ -76,15 +76,15 @@ Personal recommendation is to run this within a docker container.
 
 #### Useful info
 
-1. TensorRT is not supported for each operation and can cause issues. In that case, try upgrading it's version but keep in mind the CUDA version and trition of your system. If possible update the CUDA version.
+1. TensorRT is not supported for each operation and can cause issues. In that case, try upgrading its version but keep in mind the CUDA version and trition of your system. If possible update the CUDA version.
 1. FP16 version takes time to compile so take a break.
 
 ## Features
 
 ### Dynamic Batching
 
-1. While using HTTP client, use asycn_infer and make sure to set concurrency while initializing the client.
-1. While using GRPC client, use async_infer with a callback. And don't use context manager with the client. Not sure what's the reason, but will explore and update here.
+1. While using the HTTP client, use asycn_infer and make sure to set concurrency while initializing the client.
+1. While using the GRPC client, use async_infer with a callback. And don't use context manager with the client. Not sure what's the reason, but will explore and update here.
 
 ## TODO:
 
@@ -92,7 +92,7 @@ Personal recommendation is to run this within a docker container.
 1. Model analyzer
 1. Metrics
 1. Stable diffusion pipelines
-1. Efficient deployment on cloud (for eg. runpod.io)
+1. Efficient deployment on the cloud (for eg. runpod.io)
 
 ## Resources
 
