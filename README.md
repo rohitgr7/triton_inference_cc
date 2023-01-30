@@ -1,5 +1,20 @@
 # Triton inference server CC
 
+## Intro
+
+This repo contains all the code I worked on while learning triton inference server. It has both PyTorch and Tensorflow pipeline but my main focus is to explore PyTorch models so all the advance features will be based on PyTorch.
+
+For starters, you can setup your environment as explained below and then walk-through the starter notebooks:
+
+```console
+inference_notebooks/inference_pytorch.ipynb
+inference_notebooks/inference_tensorflow.ipynb
+```
+
+Later you can explore advance use-cases in `inference_notebooks/advance.ipynb`.
+
+I have also prepared some notes here in README, you can explore them too.
+
 ## Setup
 
 > **IMPORTANT**: Check the supported triton version from the [Deep Learning Frameworks support matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html) and update the base image in Dockerfiles accordingly.
@@ -21,7 +36,7 @@
 
 ### Notes:
 
-1. The current base image in dockerfile has all the backends, even including tensorflow which is not required. Consider [customizing it](https://github.com/triton-inference-server/server/blob/main/docs/customization_guide/build.md#building-with-docker). More info [here](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver).
+1. The current base image in dockerfile has all the backends, which may not be required. Consider [customizing it](https://github.com/triton-inference-server/server/blob/main/docs/customization_guide/build.md#building-with-docker). More info [here](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver).
 
 1. The ports are for:
 
