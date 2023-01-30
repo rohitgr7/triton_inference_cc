@@ -12,6 +12,7 @@ venv/
 
 # Development
 weights
+weights_tf
 .ipynb_checkpoints
 *.plan
 *.onnx
