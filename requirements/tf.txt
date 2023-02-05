@@ -1,0 +1,4 @@
+-r base.txt
+tensorflow-cpu==2.11.0
+tf2onnx==1.13.0
+numpy==1.22.4

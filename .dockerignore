@@ -13,6 +13,8 @@ venv/
 models
 weights
 weights_tf
+models_tf
+models_sd
 .ipynb_checkpoints
 deb
 *plan
