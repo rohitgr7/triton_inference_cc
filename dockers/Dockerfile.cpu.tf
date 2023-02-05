@@ -8,4 +8,5 @@ SHELL ["/bin/bash", "-c"]
 COPY requirements ${PROJECT_PATH}/requirements/
 
 RUN pip install --upgrade pip && \
-    pip install -r ${PROJECT_PATH}/requirements/base.txt
+    pip install tensorflow-cpu==2.11.0 && \
+    pip install -r ${PROJECT_PATH}/requirements/tf.txt

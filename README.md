@@ -23,7 +23,13 @@ I have also prepared some notes here in README, you can explore them too.
 1. Create the image
 
    ```bash
-   docker build -t triton_cc:0.0.1 -f dockers/Dockerfile.cpu .
+   docker build -t triton_cc_pt:0.0.1 -f dockers/Dockerfile.cpu.pt .
+   ```
+
+   For tensorflow:
+
+   ```bash
+   docker build -t triton_cc_tf:0.0.1 -f dockers/Dockerfile.cpu.tf .
    ```
 
 1. Run the notebook and save the `weights` folder to ensure the default PyTorch model gets loaded.
@@ -31,7 +37,13 @@ I have also prepared some notes here in README, you can explore them too.
 1. Run the docker container with tritonserver in detach mode
 
    ```bash
-   docker run -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models/:/project/models/ -v ${PWD}/weights/:/project/weights/ triton_cc:0.0.1 tritonserver --model-repository models/ --model-control-mode=poll
+   bash bash_scripts/triton_server_pytorch.sh
+   ```
+
+   For tensorflow:
+
+   ```bash
+   bash bash_scripts/triton_server_tensorflow.sh
    ```
 
 ### Notes:
