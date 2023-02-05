@@ -97,7 +97,20 @@ Personal recommendation is to run this within a docker container.
 
 ## Stable Diffusion
 
+1. Create the image
+
+   ```bash
+   docker build -t triton_cc_pt:0.0.1 -f dockers/Dockerfile.cpu.pt .
+   ```
+
+1. To start a container
+
+   ```bash
+   bash bash_scripts/triton_server_sd.sh
+   ```
+
 1. While compiling Unet with ONNX, it will create multiple files because the model size >2GB.
+
 1. If loading all of these models for a pipeline doesn't work and doesn't show any significant info in the logs, try loading them individually with `--log-verbose=1`.
 
 ## Features
