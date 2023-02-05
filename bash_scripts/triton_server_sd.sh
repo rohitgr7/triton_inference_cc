@@ -1,0 +1,1 @@
+docker run --shm-size=16g --ulimit memlock=-1 --ulimit stack=67108864 -p 8000:8000 -p 8001:8001 -p 8002:8002 --rm -it -v ${PWD}/models_sd/:/project/models_sd/ -v ${PWD}/weights_sd/:/project/weights_sd/ triton_cc_sd:0.0.1 tritonserver --model-repository models_sd/torchscript --log-verbose=2 --model-control-mode=poll

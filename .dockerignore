@@ -11,10 +11,11 @@ venv/
 
 # Development
 models
-weights
-weights_tf
 models_tf
 models_sd
+weights
+weights_tf
+weights_sd
 .ipynb_checkpoints
 deb
 *plan
@@ -22,3 +23,4 @@ deb
 *pt
 *pth
 inference_notebook
+bash_scripts

@@ -1,0 +1,25 @@
+
+name: "vae"
+platform: "onnxruntime_onnx"
+max_batch_size: 8
+
+input [
+  {
+    name: "latents"
+    data_type: TYPE_FP32
+    dims: [ -1, -1, -1 ]
+  }
+]
+output [
+  {
+    name: "image"
+    data_type: TYPE_FP32
+    dims: [ 3, -1, -1 ]
+  }
+]
+
+instance_group [
+  {
+    kind: KIND_CPU
+  }
+]
