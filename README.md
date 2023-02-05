@@ -72,6 +72,10 @@ I have also prepared some notes here in README, you can explore them too.
 1. Make sure to use the same input and output names while creating the Onnx model and during client inference.
 1. Take care of the dtypes you are using to compile to Onnx and the ones specified in the `config.pbtxt`. For instance, in the case of transformers tokenizer, it returns dtype int64 and if you use int32 (preferred) in `config.pbtxt`, it will fail.
 
+### Torchscript Backend
+
+1. You can configure the following [parameters](https://github.com/triton-inference-server/pytorch_backend#parameters) when using torchscript platform.
+
 ### TensorRT Backend
 
 #### Installation
@@ -90,6 +94,24 @@ Personal recommendation is to run this within a docker container.
 
 1. TensorRT is not supported for each operation and can cause issues. In that case, try upgrading its version but keep in mind the CUDA version and trition of your system. If possible update the CUDA version.
 1. FP16 version takes time to compile so take a break.
+
+## Stable Diffusion
+
+1. Create the image
+
+   ```bash
+   docker build -t triton_cc_pt:0.0.1 -f dockers/Dockerfile.cpu.pt .
+   ```
+
+1. To start a container
+
+   ```bash
+   bash bash_scripts/triton_server_sd.sh
+   ```
+
+1. While compiling Unet with ONNX, it will create multiple files because the model size >2GB.
+
+1. If loading all of these models for a pipeline doesn't work and doesn't show any significant info in the logs, try loading them individually with `--log-verbose=1`.
 
 ## Features
 

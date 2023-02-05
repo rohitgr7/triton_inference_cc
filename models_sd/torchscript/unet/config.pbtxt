@@ -1,0 +1,45 @@
+
+name: "unet"
+platform: "pytorch_libtorch"
+max_batch_size: 8
+
+input [
+  {
+    name: "prompt"
+    data_type: TYPE_FP32
+    dims: [ -1, -1, -1 ]
+  }
+]
+input [
+  {
+    name: "height"
+    data_type: TYPE_INT32
+    dims: [ 1 ]
+    reshape: { shape: [ ] }
+  }
+]
+input [
+  {
+    name: "width"
+    data_type: TYPE_FP32
+    dims: [ -1, 1024 ]
+  }
+]
+output [
+  {
+    name: "image"
+    data_type: TYPE_FP32
+    dims: [ 4, -1, -1 ]
+  }
+]
+
+instance_group [
+  {
+    kind: KIND_CPU
+  }
+]
+
+parameters: {
+    key: "INFERENCE_MODE"
+    value: { string_value: "true" }
+}
