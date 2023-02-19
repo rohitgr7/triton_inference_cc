@@ -93,17 +93,15 @@ class TritonPythonModel:
           be the same as `requests`
         """
 
-        output0_dtype = self.output0_dtype
-
         responses = []
 
         # Every Python backend must iterate over everyone of the requests
         # and create a pb_utils.InferenceResponse for each of them.
         for request in requests:
-            # Get INPUT0
-            in_0 = pb_utils.get_input_tensor_by_name(request, "INPUT0")
-            # Get INPUT1
-            in_1 = pb_utils.get_input_tensor_by_name(request, "INPUT1")
+            # Get input_ids
+            in_0 = pb_utils.get_input_tensor_by_name(request, "input_ids")
+            # Get attention_mask
+            in_1 = pb_utils.get_input_tensor_by_name(request, "attention_mask")
 
             with torch.inference_mode():
                 (out_0,) = self.model(
@@ -113,7 +111,7 @@ class TritonPythonModel:
             # Create output tensors. You need pb_utils.Tensor
             # objects to create pb_utils.InferenceResponse.
             out_tensor_0 = pb_utils.Tensor(
-                "OUTPUT0", out_0.numpy().astype(output0_dtype)
+                "OUTPUT0", out_0.numpy().astype(self.output0_dtype)
             )
 
             # Create InferenceResponse. You can set an error here in case

@@ -6,12 +6,12 @@ max_batch_size: 32
 
 input [
  {
-    name: "INPUT0"
+    name: "input_ids"
     data_type: TYPE_INT32
     dims: [ 256 ]
   } ,
 {
-    name: "INPUT1"
+    name: "attention_mask"
     data_type: TYPE_INT32
     dims: [ 256 ]
   }
