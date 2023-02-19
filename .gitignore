@@ -16,5 +16,4 @@ weights_tf
 .ipynb_checkpoints
 *.plan
 *.onnx
-*.pt
 *.pth

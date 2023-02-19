@@ -67,7 +67,7 @@ I have also prepared some notes here in README, you can explore them too.
 
 ### Onnx backend
 
-1. Make sure the first axis of input and output is dynamic.
+1. Make sure the first axis of input and output is dynamic for batch_size.
 1. Always take care of the input dimension you are mentioning in the `config.pbtxt`.
 1. Make sure to use the same input and output names while creating the Onnx model and during client inference.
 1. Take care of the dtypes you are using to compile to Onnx and the ones specified in the `config.pbtxt`. For instance, in the case of transformers tokenizer, it returns dtype int64 and if you use int32 (preferred) in `config.pbtxt`, it will fail.
