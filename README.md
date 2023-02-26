@@ -1,5 +1,9 @@
 # Triton inference server CC
 
+## Talk
+
+- Gave a talk at FossUnited Bangalore. [Here are the slides](https://docs.google.com/presentation/d/1sqCgmxfbbmU-NUKdMYZOvNvhQ8Bot60u9XF5EURLXxo).
+
 ## Intro
 
 This repo contains all the code I worked on while learning [Triton Inference Server](https://github.com/triton-inference-server/server). It has both PyTorch and Tensorflow pipeline but my main focus is to explore PyTorch models so all the advanced features will be based on PyTorch.
