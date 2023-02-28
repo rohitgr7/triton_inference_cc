@@ -1,22 +1,31 @@
 
-name: "torchscript"
-platform: "pytorch_libtorch"
+name: "python_dynamic_batching"
+backend: "python"
 max_batch_size: 32
 
+dynamic_batching {
+  preferred_batch_size: [ 4, 8, 16, 32 ]
+  max_queue_delay_microseconds: 3000000
+}
+
 input [
- {
+  {
     name: "input_ids"
     data_type: TYPE_INT32
     dims: [ 256 ]
-  } ,
-{
+  }
+]
+input [
+  {
     name: "attention_mask"
     data_type: TYPE_INT32
     dims: [ 256 ]
   }
 ]
-output {
+output [
+  {
     name: "OUTPUT0"
     data_type: TYPE_FP32
     dims: [ 28 ]
   }
+]
